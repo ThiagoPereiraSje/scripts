@@ -39,7 +39,6 @@ set showmatch             " Show matching words during a search
 " Configure Netrw
 "---------------------------------------------------
 let g:netrw_winsize=25		" Set window size
-nmap <F2> :Lexplore<CR>		" Toggle file explorer
 
 " Configure wildmenu
 "---------------------------------------------------
@@ -48,10 +47,10 @@ set wildmode=list:longest           " Make wildmenu behave like similar to Bash 
 set wildignore=*.docx,*.pdf,*.xlsx  " Wildmenu will ignore files with these extensions
 
 
-" Configure Terminal
+" Configure split
 "---------------------------------------------------
-set termwinsize=12x0      " Set terminal size
 set splitbelow            " Always split below
+set splitright            " Always split right
 
 " File type detection
 "---------------------------------------------------
@@ -87,12 +86,21 @@ colorscheme onedark       " Your favorite color scheme's name
 "---------------------------------------------------
 " Map Keyboard Shortcut
 "---------------------------------------------------
+
+" Toggle file explorer
+nmap <F2> :Lexplore<CR>
+
 " Map the escape key to jj
 inoremap jj <esc>         
 
 " Press the space bar to type the : character in command mode
 nnoremap <space> :
 
+" Move to the previous tab
+nnoremap <c-left> gT
+
+" Move to the next tab
+nnoremap <c-right> gt
 
 
 
