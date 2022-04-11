@@ -23,6 +23,7 @@ set background=dark   	  " dark or light
 set cursorline            " Highlight cursor line underneath the cursor horizontally
 " set cursorcolumn        " Highlight cursor line underneath the cursor vertically
 
+
 " Configure search
 "---------------------------------------------------
 set hlsearch    	        " Enable highlight search
@@ -30,15 +31,12 @@ set incsearch             " While searching though a file incrementally highligh
 set ignorecase            " Ignore capital letters during search
 set smartcase             " This will allow you to search specifically for capital letters
 
-" Configure StatusBar
-"---------------------------------------------------
-set showcmd               " Show partial command you type in the last line of the screen
-set showmode              " Show the mode you are on the last line
-set showmatch             " Show matching words during a search
 
 " Configure Netrw
 "---------------------------------------------------
 let g:netrw_winsize=25		" Set window size
+let g:netrw_liststyle=3     " Set view style to three mode
+
 
 " Configure wildmenu
 "---------------------------------------------------
@@ -51,6 +49,7 @@ set wildignore=*.docx,*.pdf,*.xlsx  " Wildmenu will ignore files with these exte
 "---------------------------------------------------
 set splitbelow            " Always split below
 set splitright            " Always split right
+
 
 " File type detection
 "---------------------------------------------------
@@ -73,9 +72,12 @@ Plug 'sheerun/vim-polyglot'                       " Syntax highlight
 Plug 'joshdick/onedark.vim'					              " Color scheme
 Plug 'jiangmiao/auto-pairs'			                  " Provides automatic pair completion
 Plug 'dense-analysis/ale'                         " Provides linting syntax checking and semantic errors
-
+Plug 'pbrisbin/vim-mkdir'                         " Automatically create any directory before writing
+Plug 'vim-airline/vim-airline'                    " Provides statusline on vim window
+Plug 'vim-airline/vim-airline-themes'             " Provides themes for statusline
 
 call plug#end()
+
 
 "---------------------------------------------------
 " Plugin Settings
@@ -88,21 +90,31 @@ colorscheme onedark       " Your favorite color scheme's name
 "---------------------------------------------------
 
 " Toggle file explorer
-nmap <F2> :Lexplore<CR>
+nnoremap <F12> :Lexplore<CR>
+nnoremap <c-f> :Lexplore %:p:h<CR>
+
 
 " Map the escape key to jj
 inoremap jj <esc>         
 
+
 " Press the space bar to type the : character in command mode
 nnoremap <space> :
 
-" Move to the previous tab
-nnoremap <c-left> gT
 
-" Move to the next tab
-nnoremap <c-right> gt
-
-
-
+" Switch on split windows
+nnoremap <c-down>     <c-w>j
+nnoremap <c-up>       <c-w>k
+nnoremap <c-left>     <c-w>h
+nnoremap <c-right>    <c-w>l
 
 
+" Tab Terminal shortcut
+nnoremap   <silent>   <S-t>       :tab term<CR>
+nnoremap   <silent>   <S-left>    :tabp<CR>
+nnoremap   <silent>   <S-right>   :tabn<CR>
+tnoremap   <silent>   <S-left>    <C-\><C-n>:tabp<CR>
+tnoremap   <silent>   <S-right>   <C-\><C-n>:tabn<CR>
+
+" Save shortucut
+nnoremap <c-k>     :w<CR>
