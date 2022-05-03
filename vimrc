@@ -89,32 +89,34 @@ colorscheme onedark       " Your favorite color scheme's name
 " Map Keyboard Shortcut
 "---------------------------------------------------
 
+
 " Toggle file explorer
 nnoremap <F12> :Lexplore<CR>
 nnoremap <c-f> :Lexplore %:p:h<CR>
 
 
-" Map the escape key to jj
-inoremap jj <esc>         
-
-
 " Press the space bar to type the : character in command mode
 nnoremap <space> :
 
+" Map jj shortcut to esc
+inoremap jj <esc>
+nnoremap <c-k> :w<CR>
 
 " Switch on split windows
 nnoremap <c-down>     <c-w>j
 nnoremap <c-up>       <c-w>k
 nnoremap <c-left>     <c-w>h
 nnoremap <c-right>    <c-w>l
+tnoremap <c-down>     <c-w>j
+tnoremap <c-up>       <c-w>k
+tnoremap <c-left>     <c-w>h
+tnoremap <c-right>    <c-w>l
 
 
 " Tab Terminal shortcut
-nnoremap   <silent>   <S-t>       :tab term<CR>
-nnoremap   <silent>   <S-left>    :tabp<CR>
-nnoremap   <silent>   <S-right>   :tabn<CR>
-tnoremap   <silent>   <S-left>    <C-\><C-n>:tabp<CR>
-tnoremap   <silent>   <S-right>   <C-\><C-n>:tabn<CR>
-
-" Save shortucut
-nnoremap <c-k>     :w<CR>
+" <C-\> Send a command to the terminal
+nnoremap   <S-t>     :tab term<CR>
+nnoremap   <S-left>  :tabp<CR>
+nnoremap   <S-right> :tabn<CR>
+tnoremap   <S-left>  <c-w>gT
+tnoremap   <S-right> <c-w>gt
